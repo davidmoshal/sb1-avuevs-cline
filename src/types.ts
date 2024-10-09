@@ -18,6 +18,7 @@ export interface UserGroup {
   name: string;
   role: GroupRole;
   users: User[];
+  limits?: FinancialLimits;
 }
 
 export interface Host {
@@ -25,7 +26,7 @@ export interface Host {
   name: string;
   auctions: Auction[];
   adminGroup: UserGroup;
-  traderGroup: UserGroup;
+  traderGroup: [AuctionTradingGroup];
   isMock: boolean;
 }
 
@@ -64,10 +65,7 @@ export interface TraderActivity {
   side: Side;
 }
 
-export interface AuctionTradingGroup {
-  id: string;
-  name: string;
-  traders: User[];
+export interface AuctionTradingGroup extends UserGroup {
   limits: FinancialLimits;
 }
 
